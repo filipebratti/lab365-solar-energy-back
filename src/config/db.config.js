@@ -10,6 +10,12 @@ module.exports = {
   password: configdatabase.password, //Qual a senha do seu usuário no postgres;
   database: configdatabase.database, //Qual o nome do seu database no postgres;
   port: configdatabase.port, //Qual porta do seu postgres (Normalmente é a 5432);
+  ssl: true, // Habilita o uso de SSL
+  dialectOptions: {
+    ssl: {
+      require: true, // Define o sslmode para "require"
+    },
+  },
   define: {
     underscored: true,
     underscoredAll: true,
