@@ -4,20 +4,15 @@ var parse = require('pg-connection-string').parse;
 var configdatabase = parse(process.env.HOST);
 
 module.exports = {
-  dialect: 'postgres',
-  host: process.env.HOST,
-  username: process.env.USERNAMEDB,
-  password: process.env.PASSWORDDB,
-  database: process.env.DATABASE,
-  port: process.env.PORT,
-  ssl: true, // Habilita o uso de SSL
-  dialectOptions: {
-    ssl: {
-      require: true, // Define o sslmode para "require"
-    },
-  },
+  dialect: "postgres", //Qual banco de dados está utilizando;
+  host: configdatabase.host, //Qual servidor está utilizando;
+  username: configdatabase.user, //Qual o nome do seu usuário no postgres;
+  password: configdatabase.password, //Qual a senha do seu usuário no postgres;
+  database: configdatabase.database, //Qual o nome do seu database no postgres;
+  port: configdatabase.port, //Qual porta do seu postgres (Normalmente é a 5432);
   define: {
     underscored: true,
     underscoredAll: true,
-  }
+    freezeTableName: true,
+  },
 };
