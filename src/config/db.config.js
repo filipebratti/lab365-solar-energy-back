@@ -4,7 +4,7 @@ var parse = require('pg-connection-string').parse;
 var configdatabase = parse(process.env.HOST);
 
 module.exports = {
-  dialect: "postgres", //Qual banco de dados está utilizando;
+  dialect: process.env.DIALECT, //Qual banco de dados está utilizando;
   host: configdatabase.host, //Qual servidor está utilizando;
   username: configdatabase.user, //Qual o nome do seu usuário no postgres;
   password: configdatabase.password, //Qual a senha do seu usuário no postgres;
